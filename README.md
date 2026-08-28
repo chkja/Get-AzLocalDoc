@@ -2,8 +2,6 @@
 
 A standalone PowerShell script that documents an existing **Azure Local** cluster by querying Azure ARM and optionally the HCI nodes directly, then produces a structured **Markdown report**.
 
-![Get-AzLocalDoc running in PowerShell](docs/get-azlocaldoc-demo.png)
-
 > See [example report output](docs/example-report.md) for a sample of what the script generates.
 
 ![Example report](docs/example-report-screenshot.png)
@@ -43,6 +41,8 @@ For on-node collection (`-IncludeNodeData`), WinRM/PowerShell remoting must be e
 ```powershell
 .\Get-AzLocalDoc.ps1 -ResourceGroupName "rg-azlocal-prod" -ClusterName "hci-cluster-01"
 ```
+
+![Get-AzLocalDoc running in PowerShell](docs/get-azlocaldoc-demo.png)
 
 ### Interactive login with on-node data
 ```powershell
