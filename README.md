@@ -4,6 +4,8 @@ A standalone PowerShell script that documents an existing **Azure Local** cluste
 
 ![Get-AzLocalDoc running in PowerShell](docs/get-azlocaldoc-demo.png)
 
+> See [example report output](docs/example-report.md) for a sample of what the script generates.
+
 ---
 
 ## What it collects
