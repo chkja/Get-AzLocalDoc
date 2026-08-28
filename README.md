@@ -2,6 +2,8 @@
 
 A standalone PowerShell script that documents an existing **Azure Local** cluster by querying Azure ARM and optionally the HCI nodes directly, then produces a structured **Markdown report**.
 
+![Get-AzLocalDoc running in PowerShell](docs/get-azlocaldoc-demo.png)
+
 ---
 
 ## What it collects
