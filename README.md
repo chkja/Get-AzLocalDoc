@@ -1,8 +1,6 @@
 # Get-AzLocalDoc
 
-A standalone PowerShell script that documents an existing **Azure Local** (formerly Azure Stack HCI) cluster by querying Azure ARM and optionally the HCI nodes directly, then produces a structured **Markdown report**.
-
-> Inspired by [ODIN for Azure Local](https://github.com/Azure/odinforazurelocal) — this is the reverse direction: *existing cluster → documentation*, not *design → deployment*.
+A standalone PowerShell script that documents an existing **Azure Local** cluster by querying Azure ARM and optionally the HCI nodes directly, then produces a structured **Markdown report**.
 
 ---
 
@@ -74,16 +72,23 @@ $cred = New-Object PSCredential(
 
 A Markdown file with the following sections:
 
-1. Cluster Overview
-2. Deployment Configuration (nodes, network intents, infrastructure IPs, storage paths)
-3. Network Configuration
-4. Storage Configuration *(on-node: pools, volumes, physical disks)*
-5. Identity & Security (AAD, AD OU, security settings)
-6. Azure Arc & Extensions
-7. Logical Networks (VLANs, subnets)
-8. Virtual Machines & Images
-9. Updates
-10. On-Node Data *(optional: cluster nodes, NICs)*
+| Section | Contents |
+|---|---|
+| **R1 Report Metadata** | Cluster identity, status, provisioning state, billing model, cluster version, manufacturer, IMDS attestation, timestamps, custom location, Arc resource bridge, tags |
+| **R3 Configuration Summary** | |
+| — R3.1 Deployment Scenario & Scale | Deployment mode, node count, storage mode, cluster version, capabilities, attestation endpoint |
+| — R3.2 Node Configuration | Per-node: IP, hardware model, OS version, serial number, CPU cores, memory, OEM activation |
+| — R3.3 Host Networking, Intents & Overrides | Storage auto IP, switchless, per-intent adapter/RDMA details, storage VLANs |
+| — R3.4 Infrastructure Network | Gateway, subnet mask, DNS, IP pool |
+| — R3.5 Nodes Network | Per-node NIC details (requires `-IncludeNodeData`) |
+| — R3.6 Active Directory | Domain FQDN, OU path, secrets location |
+| — R3.7 Security Configuration | BitLocker, Credential Guard, DRTM, HVCI, WDAC, SMB signing/encryption |
+| — R3.8 Microsoft Defender for Cloud | Per-plan status (Servers, Containers, SQL, Kubernetes, DNS, Storage) |
+| — R3.9 Billing & Licensing | Billing model, trial days, last billing, software assurance, Windows Server Subscription |
+| **R4 Validation Summary** | Live status checks: connectivity, provisioning, Arc state, extensions health, updates, Defender, logical networks |
+| **R5 Workloads & Platform Configuration** | Arc extensions, logical networks (VLANs/subnets), VMs & images (cross-subscription), updates, storage |
+
+Output file is named: `AzureLocal-<ClusterName>-YYYYMMDD-HHmm.md`
 
 ---
 
@@ -99,7 +104,7 @@ A Markdown file with the following sections:
 | `-Credential` | With `-ServicePrincipal` | AppId + secret as PSCredential |
 | `-IncludeNodeData` | | Collect on-node data via PowerShell remoting |
 | `-NodeCredential` | | Credential for HCI node remoting |
-| `-OutputPath` | | Output file path (default: `.\<cluster>-doc-<date>.md`) |
+| `-OutputPath` | | Output file path (default: `.\AzureLocal-<cluster>-<date>-<time>.md`) |
 
 ---
 
