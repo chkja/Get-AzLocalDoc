@@ -80,19 +80,18 @@ A Markdown file with the following sections:
 
 | Section | Contents |
 |---|---|
-| **R1 Report Metadata** | Cluster identity, status, provisioning state, billing model, cluster version, manufacturer, IMDS attestation, timestamps, custom location, Arc resource bridge, tags |
-| **R3 Configuration Summary** | |
-| — R3.1 Deployment Scenario & Scale | Deployment mode, node count, storage mode, cluster version, capabilities, attestation endpoint |
-| — R3.2 Node Configuration | Per-node: IP, hardware model, OS version, serial number, CPU cores, memory, OEM activation |
-| — R3.3 Host Networking, Intents & Overrides | Storage auto IP, switchless, per-intent adapter/RDMA details, storage VLANs |
-| — R3.4 Infrastructure Network | Gateway, subnet mask, DNS, IP pool |
-| — R3.5 Nodes Network | Per-node NIC details (requires `-IncludeNodeData`) |
-| — R3.6 Active Directory | Domain FQDN, OU path, secrets location |
-| — R3.7 Security Configuration | BitLocker, Credential Guard, DRTM, HVCI, WDAC, SMB signing/encryption |
-| — R3.8 Microsoft Defender for Cloud | Per-plan status (Servers, Containers, SQL, Kubernetes, DNS, Storage) |
-| — R3.9 Billing & Licensing | Billing model, trial days, last billing, software assurance, Windows Server Subscription |
-| **R4 Validation Summary** | Live status checks: connectivity, provisioning, Arc state, extensions health, updates, Defender, logical networks |
-| **R5 Workloads & Platform Configuration** | Arc extensions, logical networks (VLANs/subnets), VMs & images (cross-subscription), updates, storage |
+| **Report Metadata** | Cluster identity, status, provisioning state, billing model, cluster version, manufacturer, IMDS attestation, timestamps, custom location, Arc resource bridge, tags |
+| **Validation Summary** | Live status checks: connectivity, provisioning, Arc state, extensions health, updates, Defender, logical networks |
+| **Configuration Summary** | |
+| — Deployment Scenario & Scale | Deployment mode, node count, storage mode, cluster version, capabilities, attestation endpoint |
+| — Node Configuration | Per-node: IP, hardware model, OS version, serial number, CPU cores, memory, OEM activation |
+| — Network Configuration | Storage auto IP, switchless, per-intent adapter/RDMA details, storage VLANs, infrastructure IPs, logical networks, NSGs |
+| — Active Directory | Domain FQDN, OU path, secrets location |
+| — Security Configuration | BitLocker, Credential Guard, DRTM, HVCI, WDAC, SMB signing/encryption |
+| — Microsoft Defender for Cloud | Per-plan status (Servers, Containers, SQL, Kubernetes, DNS, Storage) |
+| — Billing & Licensing | Billing model, trial days, last billing, software assurance, Windows Server Subscription |
+| — Monitoring & Insights | Azure Monitor agent status, Data Collection Rules |
+| **Workloads & Platform Configuration** | Arc extensions, VMs & images (cross-subscription), Kubernetes clusters, updates, storage |
 
 Output file is named: `AzureLocal-<ClusterName>-YYYYMMDD-HHmm.md`
 
