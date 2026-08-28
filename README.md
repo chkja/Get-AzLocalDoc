@@ -6,6 +6,8 @@ A standalone PowerShell script that documents an existing **Azure Local** cluste
 
 > See [example report output](docs/example-report.md) for a sample of what the script generates.
 
+![Example report](docs/example-report-screenshot.png)
+
 ---
 
 ## What it collects
