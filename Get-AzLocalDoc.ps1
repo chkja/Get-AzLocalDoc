@@ -648,7 +648,7 @@ $metaRows = @(
 Add (Format-Table-Md -Headers @('Property','Value') -Rows $metaRows)
 Add ""
 
-# ── R4 Validation Summary ─────────────────────────────────────────────────────
+# ── Validation Summary ─────────────────────────────────────────────────────
 Add "---"
 Add ""
 Add "## Validation Summary"
@@ -730,13 +730,13 @@ if ($monitoringEnabled) {
 Add (Format-Table-Md -Headers @('Status','Check','Detail') -Rows $valRows)
 Add ""
 
-# ── R3 Configuration Summary ──────────────────────────────────────────────────
+# ── Configuration Summary ──────────────────────────────────────────────────
 Add "---"
 Add ""
 Add "## Configuration Summary"
 Add ""
 
-# ── R3.1 Deployment Scenario & Scale ─────────────────────────────────────────
+# ── Deployment Scenario & Scale ─────────────────────────────────────────
 Add "### Deployment Scenario & Scale"
 Add ""
 if ($deploySettings) {
@@ -771,7 +771,7 @@ if ($cluster.IsolatedVMAttestationConfigurationAttestationServiceEndpoint) {
     Add ""
 }
 
-# ── R3.2 Node Configuration ───────────────────────────────────────────────────
+# ── Node Configuration ───────────────────────────────────────────────────
 Add "### Node Configuration"
 Add ""
 # Merge deployment IP data with reported hardware data
@@ -855,7 +855,7 @@ if ($IncludeNodeData -and $nodeData['LocalAdmins'] -and $nodeData['LocalAdmins']
 }
 Add ""
 
-# ── R3.3 Host Networking, Intents & Overrides ─────────────────────────────────
+# ── Host Networking, Intents & Overrides ─────────────────────────────────
 Add "### Network Configuration"
 Add ""
 
@@ -1047,7 +1047,7 @@ if ($nsgList.Count -gt 0) {
     Add ""
 }
 
-# ── R3.5 Active Directory Configuration ──────────────────────────────────────
+# ── Active Directory Configuration ──────────────────────────────────────
 Add "### Active Directory Configuration"
 Add ""
 if ($deploySettings -and $deploySettings.DeploymentConfigurationScaleUnit[0].DeploymentDataAdouPath) {
@@ -1065,7 +1065,7 @@ if ($deploySettings -and $deploySettings.DeploymentConfigurationScaleUnit[0].Dep
 }
 Add ""
 
-# ── R3.7 Security Configuration ───────────────────────────────────────────────
+# ── Security Configuration ───────────────────────────────────────────────
 Add "### Security Configuration"
 Add ""
 if ($deploySettings) {
@@ -1093,7 +1093,7 @@ if ($deploySettings) {
     Add ""
 }
 
-# ── R3.8 Microsoft Defender for Cloud ────────────────────────────────────────
+# ── Microsoft Defender for Cloud ────────────────────────────────────────
 Add "### Microsoft Defender for Cloud"
 Add ""
 if ($defenderPricings.Count -gt 0) {
@@ -1119,7 +1119,7 @@ if ($defenderPricings.Count -gt 0) {
 }
 Add ""
 
-# ── R3.9 Billing & Licensing ──────────────────────────────────────────────────
+# ── Billing & Licensing ──────────────────────────────────────────────────
 Add "### Billing & Licensing"
 Add ""
 $billingRows = @(
@@ -1133,7 +1133,7 @@ $billingRows = @(
 Add (Format-Table-Md -Headers @('Property','Value') -Rows $billingRows)
 Add ""
 
-# ── R3.10 Monitoring & Insights ───────────────────────────────────────────────
+# ── Monitoring & Insights ───────────────────────────────────────────────
 Add "### Monitoring & Insights"
 Add ""
 if ($monitoringEnabled) {
@@ -1157,13 +1157,13 @@ if ($monitoringEnabled) {
 }
 Add ""
 
-# ── R5 Workloads & Platform Configuration ────────────────────────────────────
+# ── Workloads & Platform Configuration ────────────────────────────────────
 Add "---"
 Add ""
 Add "## Workloads & Platform Configuration"
 Add ""
 
-# ── R5.1 Azure Arc & Extensions ───────────────────────────────────────────────
+# ── Azure Arc & Extensions ───────────────────────────────────────────────
 Add "### Azure Arc & Extensions"
 Add ""
 if ($arcSettings) {
@@ -1192,7 +1192,7 @@ if ($extensions.Count -gt 0) {
 }
 Add ""
 
-# ── R5.2 Virtual Machines & Images ────────────────────────────────────────────
+# ── Virtual Machines & Images ────────────────────────────────────────────
 Add "### Virtual Machines & Images"
 Add ""
 if ($vmInstances.Count -gt 0) {
@@ -1224,7 +1224,7 @@ if ($galleryImages.Count -gt 0) {
     Add ""
 }
 
-# ── R5.3 Kubernetes Clusters ──────────────────────────────────────────────────
+# ── Kubernetes Clusters ──────────────────────────────────────────────────
 Add "### Kubernetes Clusters"
 Add ""
 if ($k8sClusters.Count -gt 0) {
@@ -1243,7 +1243,7 @@ if ($k8sClusters.Count -gt 0) {
 }
 Add ""
 
-# ── R5.4 Updates ──────────────────────────────────────────────────────────────
+# ── Updates ──────────────────────────────────────────────────────────────
 Add "### Updates"
 Add ""
 if ($updates.Count -gt 0) {
@@ -1262,7 +1262,7 @@ if ($updates.Count -gt 0) {
 }
 Add ""
 
-# ── R5.5 Storage Configuration ────────────────────────────────────────────────
+# ── Storage Configuration ────────────────────────────────────────────────
 Add "### Storage Configuration"
 Add ""
 if ($IncludeNodeData -and $nodeData['StoragePools'] -and $nodeData['StoragePools'].Count -gt 0) {
