@@ -2,7 +2,7 @@
 
 **Cluster:** `fmazlocal`  
 **Resource Group:** `rg-azurelocal-prod-westeurope`  
-**Subscription:** Fellowmind-FMDK-CIS-AzureLocal (`581f8b45-6fef-4e04-a221-d3eabd0525b4`)  
+**Subscription:** Fellowmind-FMDK-CIS-AzureLocal (`xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`)  
 **Location:** westeurope  
 **Generated:** 2026-08-28 17:34 UTC  
 **Data Sources:** Azure ARM + PowerShell remoting (`AZL-1`)  
@@ -51,10 +51,10 @@
 | Last Sync | 8/28/2026 11:00:03 AM |
 | IMDS Attestation | ✓ Enabled |
 | Diagnostic Level | Basic |
-| Azure Portal URL | https://portal.azure.com/#resource/subscriptions/581f8b45-6fef-4e04-a221-d3eabd0525b4/resourceGroups/rg-azurelocal-prod-westeurope/providers/microsoft.azurestackhci/clusters/fmazlocal/overview |
+| Azure Portal URL | https://portal.azure.com/#resource/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/rg-azurelocal-prod-westeurope/providers/microsoft.azurestackhci/clusters/fmazlocal/overview |
 | Service Endpoint | `https://dp.stackhci.azure.com/westeurope/` |
-| Cluster ID (CloudId) | 1811501b-855a-4cb1-87db-1292ca3dab62 |
-| AAD Tenant ID | `7de6b2d4-2134-407d-abb8-4a1a36a300e4` |
+| Cluster ID (CloudId) | zzzzzzzz-zzzz-zzzz-zzzz-zzzzzzzzzzzz |
+| AAD Tenant ID | `yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy` |
 | Custom Location | `fmazlocal` |
 | Arc Resource Bridge | `fmazlocal-arcbridge` |
 | Tags | None |
@@ -97,14 +97,14 @@
 
 **Supported Capabilities:** `ManagedIdentity`, `CloudManagement`, `CloudManagedUpdates`, `CloudManagedUpdatesV2`, `MicrosoftAttestationServiceAvailability`, `AddServer`, `RepairServer`, `AddNetworkIntent`  
 
-**Attestation Service:** `https://fmazlo1811501b855a4cb1.weu.attest.azure.net`  
+**Attestation Service:** `https://REDACTED.weu.attest.azure.net`  
 
 ### Node Configuration
 
 | Node | IP Address | Model | OS Version | Serial | Cores | Memory | OEM Act. |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| AZL-2 | `10.20.0.12` | ThinkEdge SE350 V2 | 24H2 | `J701WTN4` | 8 | 128 GiB | Disabled |
-| AZL-1 | `10.20.0.11` | ThinkEdge SE350 V2 | 24H2 | `J701WTN5` | 8 | 128 GiB | Disabled |
+| AZL-2 | `10.x.x.12` | ThinkEdge SE350 V2 | 24H2 | `XXXXXXXXX` | 8 | 128 GiB | Disabled |
+| AZL-1 | `10.x.x.11` | ThinkEdge SE350 V2 | 24H2 | `YYYYYYYYY` | 8 | 128 GiB | Disabled |
 
 **Cluster Node States** *(via PowerShell remoting from `AZL-1`)*
 
@@ -123,12 +123,12 @@
 
 | Account | Type | Source |
 | --- | --- | --- |
-| AZL\AzureLocalDeployment | User | ActiveDirectory |
-| AZL\CAUfmazlhuy$ | User | ActiveDirectory |
-| AZL\Domain Admins | Group | ActiveDirectory |
-| AZL-1\ASBuiltInAdmin | User | Local |
-| AZL-1\ECEAgentService | User | Local |
-| AZL-1\HCIOrchestrator | User | Local |
+| DOMAIN\AzureLocalDeployment | User | ActiveDirectory |
+| DOMAIN\CAUfmazlhuy$ | User | ActiveDirectory |
+| DOMAIN\Domain Admins | Group | ActiveDirectory |
+| NODE1\ASBuiltInAdmin | User | Local |
+| NODE1\ECEAgentService | User | Local |
+| NODE1\HCIOrchestrator | User | Local |
 | NT SERVICE\Azure Stack HCI Download Service | Group | Unknown |
 | NT SERVICE\Azure Stack HCI Health Service | Group | Unknown |
 | NT SERVICE\Azure Stack HCI Update Service | Group | Unknown |
@@ -146,16 +146,16 @@
 
 | Setting | Value |
 | --- | --- |
-| Gateway | `10.20.0.1` |
+| Gateway | `10.x.x.1` |
 | Subnet Mask | `255.255.255.0` |
-| DNS Servers | `10.128.0.4` |
+| DNS Servers | `10.z.z.4` |
 | Use DHCP | N/A |
 
 **IP Pool:**
 
 | Start IP | End IP |
 | --- | --- |
-| `10.20.0.20` | `10.20.0.29` |
+| `10.x.x.20` | `10.x.x.29` |
 
 #### Host Networking Intents
 
@@ -195,11 +195,11 @@
 
 | Adapter | Description | Speed | MAC Address |
 | --- | --- | --- | --- |
-| Port0 | IBM USB Remote NDIS Network Device | 426.0 Mbps | `8E-3B-4A-80-C0-67` |
-| Port6 | Intel(R) Ethernet Connection E823-C for SFP #4 | 10 Gbps | `8C-3B-4A-80-C0-63` |
-| Port4 | Intel(R) Ethernet Connection E823-C for SFP | 10 Gbps | `8C-3B-4A-80-C0-61` |
-| vManagement(compute_management) | Hyper-V Virtual Ethernet Adapter | 10 Gbps | `8C-3B-4A-80-C0-61` |
-| Port5 | Intel(R) Ethernet Connection E823-C for SFP #3 | 10 Gbps | `8C-3B-4A-80-C0-62` |
+| Port0 | IBM USB Remote NDIS Network Device | 426.0 Mbps | `XX:XX:XX:XX:XX:XX` |
+| Port6 | Intel(R) Ethernet Connection E823-C for SFP #4 | 10 Gbps | `XX:XX:XX:XX:XX:XX` |
+| Port4 | Intel(R) Ethernet Connection E823-C for SFP | 10 Gbps | `XX:XX:XX:XX:XX:XX` |
+| vManagement(compute_management) | Hyper-V Virtual Ethernet Adapter | 10 Gbps | `XX:XX:XX:XX:XX:XX` |
+| Port5 | Intel(R) Ethernet Connection E823-C for SFP #3 | 10 Gbps | `XX:XX:XX:XX:XX:XX` |
 
 #### Logical Networks
 
@@ -210,7 +210,7 @@
 
 | Subnet | CIDR | Allocation | VLAN |
 | --- | --- | --- | --- |
-| lan-standard | `10.30.0.0/24` | Static | 30 |
+| lan-standard | `10.y.y.0/24` | Static | 30 |
 
 **`fmazlocal-InfraLNET`**
 
@@ -219,7 +219,7 @@
 
 | Subnet | CIDR | Allocation | VLAN |
 | --- | --- | --- | --- |
-| vnet-arcbridge-subnet | `10.20.0.0/24` | Static | N/A |
+| vnet-arcbridge-subnet | `10.x.x.0/24` | Static | N/A |
 
 #### Network Security Groups
 
@@ -246,9 +246,9 @@
 
 ### Active Directory Configuration
 
-**Domain FQDN:** `azl.local`  
-**OU Path:** `OU=azlocal,DC=azl,DC=local`  
-**Secrets Location:** `https://kv-fmazlocal-hci-2.vault.azure.net/`  
+**Domain FQDN:** `corp.example.com`  
+**OU Path:** `OU=AzureLocal,DC=corp,DC=example,DC=com`  
+**Secrets Location:** `https://kv-REDACTED.vault.azure.net/`  
 
 ### Security Configuration
 
