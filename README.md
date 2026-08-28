@@ -31,7 +31,7 @@ Install-Module -Name Az.Resources -Scope CurrentUser
 Install-Module -Name Az.StackHCI  -Scope CurrentUser
 ```
 
-For on-node collection (`-IncludeNodeData`), WinRM/PowerShell remoting must be enabled on the HCI nodes, and the `FailoverClusters` feature must be installed.
+For on-node collection (`-IncludeNodeData`), WinRM/PowerShell remoting must be enabled on the HCI nodes. The `FailoverClusters` feature is required on the **HCI nodes themselves** (it is installed by default on Azure Local) — it is not required on the machine running the script.
 
 ---
 
