@@ -359,6 +359,22 @@ try {
         $dcrList = @(($dcrResp.Content | ConvertFrom-Json).value)
     }
 } catch { }
+# Resolve the Data Collection Endpoint(s) referenced by any DCR above (may live in a different
+# resource group than the cluster, so each is fetched directly by its own resource ID)
+$dceList = @()
+$dceResourceIds = @($dcrList | ForEach-Object {
+        if ($_.PSObject.Properties['properties'] -and $_.properties.PSObject.Properties['dataCollectionEndpointId'] -and $_.properties.dataCollectionEndpointId) {
+            $_.properties.dataCollectionEndpointId
+        }
+    } | Select-Object -Unique)
+foreach ($dceId in $dceResourceIds) {
+    try {
+        $dceResp = Invoke-AzRestMethod -Method GET -Path "$dceId`?api-version=2023-03-11"
+        if ($dceResp.StatusCode -eq 200) {
+            $dceList += ($dceResp.Content | ConvertFrom-Json)
+        }
+    } catch { }
+}
 if ($monitorAgentExt -or $dcrList.Count -gt 0) { $monitoringEnabled = $true }
 
 # Updates
@@ -722,7 +738,7 @@ if ($defenderPricings.Count -gt 0) {
 
 # Monitoring / Insights
 if ($monitoringEnabled) {
-    $valRows += ,@('✓ Configured', 'Azure Monitor Insights', "Agent: $(if ($monitorAgentExt) { $monitorAgentExt.ProvisioningState } else { 'N/A' }) | DCRs: $($dcrList.Count)")
+    $valRows += ,@('✓ Configured', 'Azure Monitor Insights', "Agent: $(if ($monitorAgentExt) { $monitorAgentExt.ProvisioningState } else { 'N/A' }) | DCRs: $($dcrList.Count) | DCEs: $($dceList.Count)")
 } else {
     $valRows += ,@('⚠ Not configured', 'Azure Monitor Insights', 'No AzureMonitorWindowsAgent or Data Collection Rules found — logs not forwarded')
 }
@@ -1149,6 +1165,17 @@ if ($monitoringEnabled) {
                             if ($la) { ($la.Value | Select-Object -First 1).workspaceResourceId } else { 'N/A' }
                          } else { 'N/A' }
             $monRows += ,@($dcrName, '✓ Data Collection Rule', $lawId)
+        }
+    }
+    if ($dceList.Count -gt 0) {
+        foreach ($dce in $dceList) {
+            $dceName     = if ($dce.PSObject.Properties['name']) { $dce.name } else { 'Unknown' }
+            $dceProp     = if ($dce.PSObject.Properties['properties']) { $dce.properties } else { $null }
+            $dceState    = if ($dceProp -and $dceProp.PSObject.Properties['provisioningState']) { StatusBadge $dceProp.provisioningState } else { '— Unknown' }
+            $dceEndpoint = if ($dceProp -and $dceProp.PSObject.Properties['configurationAccess'] -and $dceProp.configurationAccess.PSObject.Properties['endpoint']) {
+                               $dceProp.configurationAccess.endpoint
+                           } else { 'N/A' }
+            $monRows += ,@($dceName, $dceState, "Data Collection Endpoint | $dceEndpoint")
         }
     }
     Add (Format-Table-Md -Headers @('Name','Status','Details') -Rows $monRows)
