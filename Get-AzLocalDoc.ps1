@@ -1139,7 +1139,7 @@ Add ""
 if ($monitoringEnabled) {
     $monRows = @()
     $agentState = if ($monitorAgentExt) { StatusBadge $monitorAgentExt.ProvisioningState } else { '— Not found' }
-    $monRows += ,@('AzureMonitorWindowsAgent', $agentState, (if ($monitorAgentExt) { (Safe $monitorAgentExt.ParameterTypeHandlerVersion) } else { 'N/A' }))
+    $monRows += ,@('AzureMonitorWindowsAgent', $agentState, $(if ($monitorAgentExt) { (Safe $monitorAgentExt.ParameterTypeHandlerVersion) } else { 'N/A' }))
     if ($dcrList.Count -gt 0) {
         foreach ($dcr in $dcrList) {
             $dcrName   = if ($dcr.PSObject.Properties['name'])  { $dcr.name }  else { 'Unknown' }
